@@ -3,8 +3,14 @@ const defaultResult = 0;
 let currentResult = defaultResult;
 let calculationDescription;
 
-currentResult = (currentResult + 10) * 3 / 2 - 1;
+// Functions
+// Addition - adds the currentResult and userInput together and reassigns that value to currentResult and updates DOM 
+const add = () => {
+  currentResult = currentResult + userInput.value;
+  outputResult(currentResult, calculationDescription);
+};
 
-calculationDescription = `(${defaultResult} + 10) * 3 / 2 - 1`;
+// When add button is clicked run the add function
+addBtn.addEventListener('click', add);
 
-outputResult(currentResult, calculationDescription);
+
