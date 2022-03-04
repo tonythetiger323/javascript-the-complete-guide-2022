@@ -21,4 +21,5 @@ const concatStrings = (string1, string2, string3) => {
   return `${string1} ${string2} ${string3}`;
 }
 
-alert(concatStrings('Happy', 'Paczki', 'Day!'))
+const alertString = concatStrings('Happy', 'Paczki', 'Day!');
+alert(alertString);
