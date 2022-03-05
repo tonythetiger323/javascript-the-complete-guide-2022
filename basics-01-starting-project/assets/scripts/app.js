@@ -15,14 +15,25 @@ const createAndWriteOutput = (operator, resultBeforeCalc, calcNumber) => {
   const calcDescription = `${resultBeforeCalc} ${operator} ${calcNumber}`;
   outputResult(currentResult, calcDescription);
 }
+
+// Creates a log entry object of data pertaining to the calculation and pushes it to an array
+const writeToLog = (operationIdentifier, prevResult, operationNumber, newResult) => {
+  const logEntry = {
+    operation: operationIdentifier,
+    prevResult,
+    number: operationNumber,
+    result: newResult
+  }
+  logEntries.push(logEntry);
+  console.log(logEntries);
+}
 // Functions to perform the mathematic operations of addition, subtraction, multiplication, and division 
 const add = () => {
   const enteredNumber = getUserInput();
   const initialResult = currentResult;
   currentResult += enteredNumber;
   createAndWriteOutput('+', initialResult, enteredNumber);
-  logEntries.push(enteredNumber);
-  console.log(logEntries);
+  writeToLog('ADD', initialResult, enteredNumber, currentResult);
   }
 
 const subtract = () => {
@@ -30,6 +41,7 @@ const subtract = () => {
   const initialResult = currentResult;
   currentResult -= enteredNumber;
   createAndWriteOutput('-', initialResult, enteredNumber);
+  writeToLog('SUBTRACT', initialResult, enteredNumber, currentResult);
 }
 
 const multiply = () => {
@@ -37,6 +49,7 @@ const multiply = () => {
   const initialResult = currentResult;
   currentResult *= enteredNumber;
   createAndWriteOutput('*', initialResult, enteredNumber);
+  writeToLog('MULTIPLY', initialResult, enteredNumber, currentResult);
 }
 
 const divide = () => {
@@ -44,6 +57,7 @@ const divide = () => {
   const initialResult = currentResult;
   currentResult /= enteredNumber;
   createAndWriteOutput('/', initialResult, enteredNumber);
+  writeToLog('DIVIDE', initialResult, enteredNumber, currentResult);
 }
 
 // Event listeners to respond to button clicks
