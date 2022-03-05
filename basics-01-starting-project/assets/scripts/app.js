@@ -2,6 +2,7 @@
 const defaultResult = 0;
 let currentResult = defaultResult;
 let calculationDescription;
+const logEntries = [];
 
 // Functions
 // Get the number user entered into calculator and convert to a number
@@ -20,6 +21,8 @@ const add = () => {
   const initialResult = currentResult;
   currentResult += enteredNumber;
   createAndWriteOutput('+', initialResult, enteredNumber);
+  logEntries.push(enteredNumber);
+  console.log(logEntries);
   }
 
 const subtract = () => {
