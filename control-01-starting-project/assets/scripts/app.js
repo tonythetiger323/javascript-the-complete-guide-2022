@@ -30,9 +30,14 @@ function writeToLog(
 }
 
 const calculateResult = (operator) => {
+  if(operator !== 'ADD' && operator !== 'SUBTRACT' && operator !== 'MULTIPLY' && operator !== 'DIVIDE') {
+    return;
+  }
+
   const enteredNumber = getUserNumberInput();
   const initialResult = currentResult;
   let operatorSymbol;
+  
   if(operator === 'ADD'){
     currentResult += enteredNumber;
     operatorSymbol = '+';
@@ -46,6 +51,7 @@ const calculateResult = (operator) => {
     currentResult /= enteredNumber;
     operatorSymbol = '/';
   }
+  
   createAndWriteOutput(operatorSymbol, initialResult, enteredNumber);
   writeToLog(operator, initialResult, enteredNumber, currentResult);
 }
