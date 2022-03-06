@@ -29,37 +29,42 @@ function writeToLog(
   console.log(logEntries);
 }
 
-function add() {
+const calculateResult = (operator) => {
   const enteredNumber = getUserNumberInput();
   const initialResult = currentResult;
-  currentResult += enteredNumber;
-  createAndWriteOutput('+', initialResult, enteredNumber);
-  writeToLog('ADD', initialResult, enteredNumber, currentResult);
+  let operatorSymbol;
+  if(operator === 'ADD'){
+    currentResult += enteredNumber;
+    operatorSymbol = '+';
+  } else if (operator === 'SUBTRACT') {
+    currentResult -= enteredNumber;
+    operatorSymbol = '-';
+  } else if (operator === 'MULTIPLY') {
+    currentResult *= enteredNumber;
+    operatorSymbol = '*';
+  } else if (operator === 'DIVIDE') {
+    currentResult /= enteredNumber;
+    operatorSymbol = '/';
+  }
+  createAndWriteOutput(operatorSymbol, initialResult, enteredNumber);
+  writeToLog(operator, initialResult, enteredNumber, currentResult);
 }
+
+function add() {
+  calculateResult('ADD');
+  }
 
 function subtract() {
-  const enteredNumber = getUserNumberInput();
-  const initialResult = currentResult;
-  currentResult -= enteredNumber;
-  createAndWriteOutput('-', initialResult, enteredNumber);
-  writeToLog('SUBTRACT', initialResult, enteredNumber, currentResult);
-}
+  calculateResult('SUBTRACT');
+  }
 
 function multiply() {
-  const enteredNumber = getUserNumberInput();
-  const initialResult = currentResult;
-  currentResult *= enteredNumber;
-  createAndWriteOutput('*', initialResult, enteredNumber);
-  writeToLog('MULTIPLY', initialResult, enteredNumber, currentResult);
-}
+  calculateResult('MULTIPLY');
+  }
 
 function divide() {
-  const enteredNumber = getUserNumberInput();
-  const initialResult = currentResult;
-  currentResult /= enteredNumber;
-  createAndWriteOutput('/', initialResult, enteredNumber);
-  writeToLog('DIVIDE', initialResult, enteredNumber, currentResult);
-}
+  calculateResult('DIVIDE');
+ }
 
 addBtn.addEventListener('click', add);
 subtractBtn.addEventListener('click', subtract);
