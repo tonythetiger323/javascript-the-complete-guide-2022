@@ -28,40 +28,61 @@ const writeToLog = (operationIdentifier, prevResult, operationNumber, newResult)
   console.log(logEntries);
 }
 // Functions to perform the mathematic operations of addition, subtraction, multiplication, and division 
-const add = () => {
-  const enteredNumber = getUserInput();
+// const add = () => {
+//   const enteredNumber = getUserInput();
+//   const initialResult = currentResult;
+//   currentResult += enteredNumber;
+//   createAndWriteOutput('+', initialResult, enteredNumber);
+//   writeToLog('ADD', initialResult, enteredNumber, currentResult);
+//   }
+
+// const subtract = () => {
+//   const enteredNumber = getUserInput();
+//   const initialResult = currentResult;
+//   currentResult -= enteredNumber;
+//   createAndWriteOutput('-', initialResult, enteredNumber);
+//   writeToLog('SUBTRACT', initialResult, enteredNumber, currentResult);
+// }
+
+// const multiply = () => {
+//   const enteredNumber = getUserInput();
+//   const initialResult = currentResult;
+//   currentResult *= enteredNumber;
+//   createAndWriteOutput('*', initialResult, enteredNumber);
+//   writeToLog('MULTIPLY', initialResult, enteredNumber, currentResult);
+// }
+
+// const divide = () => {
+//   const enteredNumber = getUserInput();
+//   const initialResult = currentResult;
+//   currentResult /= enteredNumber;
+//   createAndWriteOutput('/', initialResult, enteredNumber);
+//   writeToLog('DIVIDE', initialResult, enteredNumber, currentResult);
+// }
+
+const calculate = operation => {
+  const enteredNumber = getUserNumberInput();
   const initialResult = currentResult;
-  currentResult += enteredNumber;
-  createAndWriteOutput('+', initialResult, enteredNumber);
-  writeToLog('ADD', initialResult, enteredNumber, currentResult);
+  let operator;
+  if (operation === 'ADD') {
+    currentResult += enteredNumber;
+    operator = '+';
+  } else if (operation === 'SUBTRACT') {
+    currentResult -= enteredNumber;
+    operator = '-';
+  } else if (operation === 'MULTIPLY') {
+    currentResult *= enteredNumber;
+    operator = '*';
+  } else {
+    currentResult /= enteredNumber;
+    operator = '/';
   }
-
-const subtract = () => {
-  const enteredNumber = getUserInput();
-  const initialResult = currentResult;
-  currentResult -= enteredNumber;
-  createAndWriteOutput('-', initialResult, enteredNumber);
-  writeToLog('SUBTRACT', initialResult, enteredNumber, currentResult);
-}
-
-const multiply = () => {
-  const enteredNumber = getUserInput();
-  const initialResult = currentResult;
-  currentResult *= enteredNumber;
-  createAndWriteOutput('*', initialResult, enteredNumber);
-  writeToLog('MULTIPLY', initialResult, enteredNumber, currentResult);
-}
-
-const divide = () => {
-  const enteredNumber = getUserInput();
-  const initialResult = currentResult;
-  currentResult /= enteredNumber;
-  createAndWriteOutput('/', initialResult, enteredNumber);
-  writeToLog('DIVIDE', initialResult, enteredNumber, currentResult);
+  createAndWriteOutput(operator, initialResult, enteredNumber);
+  writeToLog(operation, initialResult, enteredNumber, currentResult);
 }
 
 // Event listeners to respond to button clicks
-addBtn.addEventListener('click', add);
-subtractBtn.addEventListener('click', subtract);
-multiplyBtn.addEventListener('click', multiply);
-divideBtn.addEventListener('click', divide);
+addBtn.addEventListener('click', calculate.bind(this, 'ADD'));
+subtractBtn.addEventListener('click', calculate.bind(this, 'SUBTRACT'));
+multiplyBtn.addEventListener('click', calculate.bind(this, 'MULTIPLY'));
+divideBtn.addEventListener('click', calculate.bind(this, 'DIVIDE'));
