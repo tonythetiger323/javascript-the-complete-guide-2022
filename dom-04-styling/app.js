@@ -7,7 +7,7 @@ const section = document.querySelector('section');
 const button = document.querySelector('button');
 
 // section.style.backgroundColor = 'blue';
-section.className = 'red-bg';
+// section.className = 'red-bg';
 
 button.addEventListener('click', () => {
   // if (section.className === 'red-bg visible') {
@@ -19,3 +19,5 @@ button.addEventListener('click', () => {
   // section.classList.toggle('visible');
   section.classList.toggle('invisible');
 });
+
+
