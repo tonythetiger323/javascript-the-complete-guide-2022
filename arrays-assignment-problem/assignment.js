@@ -27,6 +27,8 @@ function findMax(...nums) {
   return max;
 }
 
+// 3. Tweak the "findMax" function such that it finds both the minimum and maximum and returns those as an array. Then use destructuring when calling the function to store the two results in separate constants.
+
 function findMinMax(...nums){
   let min = nums[0];
   let max = nums[0];
@@ -47,7 +49,7 @@ console.log(findMax(...numArr));
 const [min, max] = findMinMax(...numArr);
 console.log(min, max);
 
-// 3. Create a list (and possibly some surrounding logic) where you ensure that NO duplicate values can be added. Use whichever approach seems appropriate to you.
+// 4. Create a list (and possibly some surrounding logic) where you ensure that NO duplicate values can be added. Use whichever approach seems appropriate to you.
 
 const emails = new Set();
 emails.add('tony.greeley@me.com');
